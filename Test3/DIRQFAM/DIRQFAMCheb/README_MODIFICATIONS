@@ -1,0 +1,11 @@
+Only "start_fam.f" file is modified.
+The old one is still saved in the "source" folder as "start_fam_old.f"
+
+New calculation type is added in the input "dirqfam.dat".
+If selected "Calculation type = 3", the Chebyshev coefficients mu(n) are
+outputted in "output/QFAM_output" folder.
+
+Parameters $N_it$ and $\Omega_b$ can be changed in "start_fam.f"
+file, now they are selected as: Nit = 100000, Omegab = +4500.d0.
+
+

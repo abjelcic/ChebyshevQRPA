@@ -1,0 +1,26 @@
+                       CPC Librarian's Note
+--------------------------------------------------------------------------------
+
+To compile the program,
+
+gfortran -o skyrme_rpa.exe  skyrme_rpa.f  
+
+To carry out the test run
+
+./skyrme_rpa.exe  
+
+This will produce a number of files  
+       
+density.out
+Plot_Bel_EM.dat
+Plot_Bel_IS.dat
+Plot_Bel_IV.dat
+skyrme_rpa.out
+td.out
+density.out
+temp1.dat
+temp2.dat
+temp3.dat
+temp4.dat
+
+The results in the skyrme_rpa.out file can be compared with the sample_skyrme_rpa.out file provided in the distribution.

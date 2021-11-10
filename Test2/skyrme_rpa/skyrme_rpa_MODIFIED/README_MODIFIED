@@ -1,0 +1,32 @@
+This is a small modification of the original "skyrme_rpa" code by:
+G. Colò, L. Cao, N. Van Giai, and L. Capelli, Computer Physics Communications 184, 142 (2013).
+
+Makefile is added. Important thing is the addition of -std=legacy flag, otherwise the original code
+encounters some issues during the input/output phase of the execution.
+
+Folder "out_matvec" is added. After the successful execution, this folder will contain RPA
+matrices A and B, as well as vectors F20 and F02 (actually F20=F02 in RPA but may differ in QRPA)
+for ISOSCALAR and ISOVECTOR exitations.
+
+In "param.rpa" some arrays are slightly increased in dimension.
+
+In "skyrme_rpa.in", the line 8 should start with 1. Read the paper what it means. It has to
+do with the way I dumped vectors F20 and F02. Also, you sould avoid J=0 and J=1 excitations.
+
+The code itself in "skyrme_rpa.f" is modified. All modifications are contained in preprocessing
+directive blocks. If the macro constant "ORIGINAL_CODE" is defined at compilation, all the
+modifications in the "skyrme_rpa.f" file are simply excluded from the code with
+preprocessing directives #ifdef or #ifndef. Important detail to notice is that when calling
+the subroutine "AVERLOG", the original code has a small bug. It is now fixed for all practical
+purposes.
+
+Folder "input_examples" contains exemplary input files which can be used by simply copy/paste-ing
+them into the code's directory.
+
+Type "make" to compile the program. An executable "run" should appear and simply type
+"./run" to run the code. If you type "make original", the same procedure will be done, with only
+exception that the macro constant "ORIGINAL_CODE" will be defined, thus excluding all the
+modifications in the "skyrme_rpa.f" file.
+
+
+
