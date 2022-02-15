@@ -18,7 +18,7 @@ munDirichlet = function_applyKernel( mun , 'Dirichlet' );
 
 
 sigma = pi/N;
-xPlotMesh1 = linspace(-1,+1,400);
+xPlotMesh1 = linspace(-1,+1,300);
 yPlotMesh1 = 1/sqrt(2*pi*sigma^2) * exp( -0.5 * ( xPlotMesh1./sigma ).^2 );
 
 [xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( munJackson   , 1.0 , 100000 );
@@ -33,12 +33,15 @@ plot( xPlotMesh3 , yPlotMesh3 , 'k--' , 'LineWidth' , 1.0 , 'MarkerSize' , 3 ); 
 legend1 = 'Gaussian $\sigma = \pi/N$';
 legend2 = 'KPM ($N=' + string(N) + '$)';
 legend3 = 'Without KPM';
-legend({legend1,legend2,legend3},'Interpreter','latex','FontSize',20);
+legend({legend1,legend2,legend3},'Interpreter','latex');
     
-grid on; grid minor;
-xlim([-1,+1]); ylim([-5,21]);
-xlabel('$x$','Interpreter','latex','FontSize',30);
-ylabel('$f(x)$','Interpreter','latex','FontSize',30);
-set(gca,'TickLabelInterpreter','latex');
-set(gca,'FontSize',20);
 
+xlim([-1,+1]);
+xlabel('$x$','Interpreter','latex');
+xticks([ -1.00 , -0.75 , -0.50 , -0.25 , 0.00 , +0.25 , +0.50 , +0.75 , +1.00 ]);
+
+ylim([-5,21]);
+ylabel('$y$','Interpreter','latex');
+
+set(gca,'TickLabelInterpreter','latex');
+set(gca,'XMinorTick','on','YMinorTick','on');

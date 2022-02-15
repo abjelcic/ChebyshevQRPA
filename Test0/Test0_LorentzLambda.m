@@ -9,6 +9,8 @@ figure;
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0,1,1.0,1.0]);
 
 
+NPlotPoints = [ 1000 , 500 , 250 , 100 , 50 ];
+
 lambdas = [ 1.0 , 2.0 , 3.0 , 4.0 , 5.0 ];
 for i = 1 : length(lambdas)
     
@@ -20,9 +22,9 @@ for i = 1 : length(lambdas)
     
     
     gamma = lambda/N;
-    xPlotMesh1 = linspace(-0.5,+0.5,1000);
+    xPlotMesh1 = linspace(-0.5,+0.5,NPlotPoints(i));
     yPlotMesh1 = (gamma/pi) ./ ( gamma^2 + xPlotMesh1.^2 );
-   
+    
     [xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( mun , 1.0 , 100000 );
     
  
@@ -30,15 +32,15 @@ for i = 1 : length(lambdas)
     plot( xPlotMesh1 , yPlotMesh1 , 'ro' , 'LineWidth' , 2.0 , 'MarkerSize' , 3 ); hold on;
     plot( xPlotMesh2 , yPlotMesh2 , 'b-' , 'LineWidth' , 1.0 , 'MarkerSize' , 3 ); hold on;
     
-    legend1 = 'Lorentzian $\gamma=\lambda/N$';
-    legend2 = 'KPM ($\lambda= ' + string(lambda) + ',N=' + string(N) + ')$';
-    legend({legend1,legend2},'Interpreter','latex','FontSize',10);
     
-    grid on; grid minor;
-    xlim([-0.5,+0.5]);ylim([0,16]);
-    xlabel('$x$','Interpreter','latex','FontSize',30);
-    if( i == 1 ) ylabel('$f(x)$','Interpreter','latex','FontSize',30); end
-    set(gca,'TickLabelInterpreter','latex');
-    set(gca,'FontSize',20);
+    xlim([-0.5,+0.5]);
+    xlabel({'$x$','$\lambda = ' + string(lambda) + ' $'},'Interpreter','latex');
+    xticks([ -0.50 , 0.00 , +0.50 ]);
 
+    ylim([0,20]);
+    if( i == 1 ) ylabel('$y$','Interpreter','latex'); end
+    
+    set(gca,'TickLabelInterpreter','latex');
+    set(gca,'XMinorTick','on','YMinorTick','on');
+        
 end
