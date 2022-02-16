@@ -30,9 +30,9 @@ plot( xPlotMesh2 , yPlotMesh2 , 'b-'  , 'LineWidth' , 1.0 , 'MarkerSize' , 3 ); 
 plot( xPlotMesh3 , yPlotMesh3 , 'k--' , 'LineWidth' , 1.0 , 'MarkerSize' , 3 ); hold on;
 
 
-legend1 = 'Gaussian $\sigma = \pi/N$';
-legend2 = 'KPM ($N=' + string(N) + '$)';
-legend3 = 'Without KPM';
+legend1 = "Gaussian $\sigma = \pi/N$";
+legend2 = strcat( "KPM ($N=" , num2str(N) , "$)" );
+legend3 = "Without KPM";
 legend({legend1,legend2,legend3},'Interpreter','latex');
     
 

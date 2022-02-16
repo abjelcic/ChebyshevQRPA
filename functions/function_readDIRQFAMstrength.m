@@ -1,18 +1,14 @@
 function [x,y,gamma_smear] = function_readDIRQFAMstrength( path , fileName )
     
-    path     = string(path);
-    fileName = string(fileName);
-
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-4) == '.out' , 'Strength not in .out format!' );
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
     
     
     for i = 1 : 8
         Line = fgetl(fid);
     end
     Line        = fgetl(fid);
-    Tokens      = split(Line," ");
+    Tokens      = strsplit(Line," ");
     gamma_smear = sscanf(Tokens{end-1},"%f");
     for i = 1 : 4
         Line = fgetl(fid);

@@ -34,7 +34,7 @@ for i = 1 : length(Nsizes)
     
     
     xlim([-0.5,+0.5]);
-    xlabel({'$x$','$N = ' + string(N) + '$'},'Interpreter','latex');
+    xlabel({"$x$",strcat("$N = ",num2str(N),"$")},'Interpreter','latex');
     xticks([ -0.50 , 0.00 , +0.50 ]);
 
     ylim([0,55]);

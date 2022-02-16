@@ -11,25 +11,25 @@ Omegab        = 250;
 ISIV          = "ISOVECTOR";
 
 
-A   = function_readmatd( './skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'A.mat'            );
-B   = function_readmatd( './skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'B.mat'            );
-F20 = function_readvecd( './skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F02_'+ISIV+'.vec' );
-F02 = function_readvecd( './skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F02_'+ISIV+'.vec' );
+A   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat"                    );
+B   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat"                    );
+F20 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
+F02 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
 
-[gamma_smear,J] = function_readSkyrmeRPAsmearingJ( './skyrme_rpa/skyrme_rpa_MODIFIED/' , 'skyrme_rpa.in' );
+[gamma_smear,J] = function_readSkyrmeRPAsmearingJ( "./skyrme_rpa/skyrme_rpa_MODIFIED/" , "skyrme_rpa.in" );
 
 
-[RPA_Omegas,RPA_BIS,RPA_BIV] = function_readSkyrmeRPAeigenfreq( './skyrme_rpa/skyrme_rpa_MODIFIED/' , 'skyrme_rpa.out' );
+[RPA_Omegas,RPA_BIS,RPA_BIV] = function_readSkyrmeRPAeigenfreq( "./skyrme_rpa/skyrme_rpa_MODIFIED/" , "skyrme_rpa.out" );
 scaleIS = max(abs(RPA_BIS( RPA_Omegas>=0 & RPA_Omegas<=50 )));
 scaleIV = max(abs(RPA_BIV( RPA_Omegas>=0 & RPA_Omegas<=50 )));
 
 
 
 if( strcmp(ISIV,'ISOSCALAR') )
-    [xPlotMesh1,yPlotMesh1] = function_readSkyrmeRPAstrength( './skyrme_rpa/skyrme_rpa_MODIFIED/' , 'Plot_Bel_IS.dat' );
+    [xPlotMesh1,yPlotMesh1] = function_readSkyrmeRPAstrength( "./skyrme_rpa/skyrme_rpa_MODIFIED/" , "Plot_Bel_IS.dat" );
     scale1 = max(abs(yPlotMesh1( xPlotMesh1>=0 & xPlotMesh1<=50 )));
 else
-    [xPlotMesh1,yPlotMesh1] = function_readSkyrmeRPAstrength( './skyrme_rpa/skyrme_rpa_MODIFIED/' , 'Plot_Bel_IV.dat' );
+    [xPlotMesh1,yPlotMesh1] = function_readSkyrmeRPAstrength( "./skyrme_rpa/skyrme_rpa_MODIFIED/" , "Plot_Bel_IV.dat" );
     scale1 = max(abs(yPlotMesh1( xPlotMesh1>=0 & xPlotMesh1<=50 )));
 end
 
@@ -62,13 +62,13 @@ for N_it = [ 200 , 400 , 800 , 1600 , 3200 , 6400 ]
 %     end
 %     grid on; grid minor;
 
-    legend1 = 'True response ($\gamma$ = ' + string(gamma_smear) + ' $\mathrm{MeV}$)';
-    legend2 = 'KPM ($N_{\mathrm{it}} = $ ' + string(N_it) + ')';
-    legend({legend1,legend2},'Interpreter','latex','FontSize',20);
+    legend1 = strcat( "True response ($\gamma$ = " , num2str(gamma_smear) , " $\mathrm{MeV}$)" );
+    legend2 = strcat( "KPM ($N_{\mathrm{it}} = $ " , num2str(N_it)        , ")"                );
+    legend({legend1,legend2},'Interpreter','latex');
     
     xlim([0,50]); ylim([0,scale1*1.1]);
-    xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex','FontSize',30);
-    ylabel('$dB(\omega)/d\omega$ $[\mathrm{fm^{'+string(2*J)+'}/MeV}]$','Interpreter','latex','FontSize',30);
+    xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex');
+    ylabel(strcat("$dB(\omega)/d\omega$ $[\mathrm{fm^{",num2str(2*J),"}/MeV}]$"),'Interpreter','latex');
     set(gca,'TickLabelInterpreter','latex');
     set(gca,'FontSize',20);
   

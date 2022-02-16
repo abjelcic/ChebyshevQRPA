@@ -1,18 +1,15 @@
 function [mun,Omegab] = function_readDIRQFAMmun( path , fileName )
     
-    path     = string(path);
-    fileName = string(fileName);
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
 
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-4) == '.out' , 'Strength not in .out format!' );
     
     for i = 1 : 9
         Line = fgetl(fid);
     end
     
     Line   = fgetl(fid);
-    Tokens = split(Line," ");
+    Tokens = strsplit(Line," ");
     Omegab = sscanf(Tokens{end-1},"%f");
     
     for i = 1 : 3

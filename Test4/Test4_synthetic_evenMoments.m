@@ -48,7 +48,7 @@ for kthMoment = [ 0 , 2 , 4 , 6 , 8 ]
         y = [ y , relerr ];
     end
     
-    PlotData{end+1} = cell( { kthMoment , x , y } );
+    PlotData{end+1} = { kthMoment , x , y };
     
     fprintf('\n');
 end
@@ -58,15 +58,15 @@ end
 figure;
 set(gcf, 'Units', 'Normalized', 'OuterPosition', [0,1,0.65,0.8]);
 Legends  = cell(0);
-AllMarks = {'o','d','^','s','x','.','+','*','v','>','<','p','h'};
+AllMarks = {"o","d","^","s","x",".","+","*","v",">","<","p","h"};
 for i = 1 : length(PlotData)
     kthMoment = PlotData{i}{1};
     N_it      = PlotData{i}{2};
     relerr    = PlotData{i}{3};
     
-    Legends{i} = '$k =$ ' + string(kthMoment);
+    Legends{i} = strcat("$k =$ ",num2str(kthMoment));
     
-    semilogy( log2(N_it) , relerr , AllMarks(mod(i,length(AllMarks)))+"-" , 'LineWidth' , 2 , 'MarkerSize' , 8 ); hold on;
+    semilogy( log2(N_it) , relerr , strcat(AllMarks{mod(i,length(AllMarks))},"-") , 'LineWidth' , 2 , 'MarkerSize' , 8 ); hold on;
     
     XtickLabels = cell(0);
     for i = 1 : length(N_it)
@@ -78,9 +78,9 @@ for i = 1 : length(PlotData)
 end
 grid on; %grid minor;
 
-legend(Legends,'Interpreter','latex','FontSize',20);
-xlabel('$N_{\mathrm{it}}$','Interpreter','latex','FontSize',30);
-ylabel('$|m_k-m_k^{\mathrm{(Chebyshev)}}|/m_k$','Interpreter','latex','FontSize',30);
+legend(Legends,'Interpreter','latex');
+xlabel('$N_{\mathrm{it}}$','Interpreter','latex');
+ylabel('$|m_k-m_k^{\mathrm{(Chebyshev)}}|/m_k$','Interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
 set(gca,'FontSize',20);    
     

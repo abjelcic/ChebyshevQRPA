@@ -1,11 +1,7 @@
 function [Omegas,BIS,BIV] = function_readSkyrmeRPAeigenfreq( path , fileName )
     
-    path     = string(path);
-    fileName = string(fileName);
-
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-4) == '.out' , 'skyrme_rpa not in .out format!' );
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
     
     
     while( true )
@@ -27,7 +23,7 @@ function [Omegas,BIS,BIV] = function_readSkyrmeRPAeigenfreq( path , fileName )
     while( true )
         Line = fgetl(fid);
         if( ~ischar(Line) ) break; end
-        if( strlength(Line(find(~isspace(Line))))==0 ) break; end
+        if( length(Line(find(~isspace(Line))))==0 ) break; end
         
         [line] = sscanf( Line , "%d %f %f %f %f %f %f" );
         omega = line(2);

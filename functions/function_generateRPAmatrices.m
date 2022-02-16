@@ -33,11 +33,11 @@ function [ A , B , F20 , F02 ] = function_generateRPAmatrices( Omegas , iFO , OF
     
     
     
-    A = +( X*diag(Omegas)*X' + conj(Y)*diag(Omegas)*transp(Y) );
-    B = -( X*diag(Omegas)*Y' + conj(Y)*diag(Omegas)*transp(X) );
+    A = +( X*diag(Omegas)*X' + conj(Y)*diag(Omegas)*transpose(Y) );
+    B = -( X*diag(Omegas)*Y' + conj(Y)*diag(Omegas)*transpose(X) );
     
-    A = 0.5*(A+A');
-    B = 0.5*(B+transp(B));
+    A = 0.5 * ( A + A'           );
+    B = 0.5 * ( B + transpose(B) );
     
     
     

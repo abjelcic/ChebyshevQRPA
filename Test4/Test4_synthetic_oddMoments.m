@@ -32,7 +32,6 @@ for kthMoment = [ -9 , -7 , -5 , -3 , -1 , +1 , +3 , +5 , +7 , +9 ]
         end
     end
     mk_calculated = real( 0.5 * [ F20 ; F02 ]' * xy );  
-    
     mk_correct    = function_kthMoment( Omegas , abs(iFO).^2 , kthMoment );
     
     relerr        = abs(mk_calculated-mk_correct)/abs(mk_correct);

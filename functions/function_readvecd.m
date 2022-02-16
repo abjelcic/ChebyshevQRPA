@@ -1,11 +1,7 @@
 function V = function_readvecd( path , fileName )
     
-    path     = string(path);
-    fileName = string(fileName);
-
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-4) == '.vec' , 'Vector not in .vec format!' );
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
     
     
     Line = fgetl(fid);

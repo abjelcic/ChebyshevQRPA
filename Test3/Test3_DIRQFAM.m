@@ -11,11 +11,11 @@ lambdaLorentz = 1.5;
 
 
 
-[xPlotMesh1,yPlotMesh1,gamma_smear] = function_readDIRQFAMstrength( './DIRQFAM/DIRQFAMCheb/output/QFAM_output/' , 'strength.out' );
+[xPlotMesh1,yPlotMesh1,gamma_smear] = function_readDIRQFAMstrength( "./DIRQFAM/DIRQFAMCheb/output/QFAM_output/" , "strength.out" );
 scale1 = max(abs(yPlotMesh1( xPlotMesh1>=0 & xPlotMesh1<=50 )));
 
 
-[mun,Omegab] = function_readDIRQFAMmun( './DIRQFAM/DIRQFAMCheb/output/QFAM_output/' , 'mu.out' );
+[mun,Omegab] = function_readDIRQFAMmun( "./DIRQFAM/DIRQFAMCheb/output/QFAM_output/" , "mu.out" );
 assert( length(mun) >= 2*N_it+1 , 'Not enough mun coefficients.' );
 mun = mun( 1 : 2*N_it+1 );
 mun = function_applyKernel( mun , kernel , lambdaLorentz );
@@ -33,13 +33,13 @@ plot( xPlotMesh1 , yPlotMesh1 , 'r.-' , 'LineWidth' , 1.0 , 'MarkerSize' , 3 ); 
 plot( xPlotMesh2 , yPlotMesh2 , 'b:'  , 'LineWidth' , 2.5 , 'MarkerSize' , 3 ); hold on;
 %grid on; grid minor;
 
-legend1 = 'True response ($\gamma$ = ' + string(gamma_smear) + ' $\mathrm{MeV}$)';
-legend2 = 'KPM ($N_{\mathrm{it}} = $ ' + string(N_it) + ')';
-legend({legend1,legend2},'Interpreter','latex','FontSize',20);
+legend1 = strcat("True response ($\gamma$ = " , num2str(gamma_smear) , " $\mathrm{MeV}$)" );
+legend2 = strcat("KPM ($N_{\mathrm{it}} = $ " , num2str(N_it)        , ")"                );
+legend({legend1,legend2},'Interpreter','latex');
 
 xlim([0,50]); ylim([0,+Inf]);
-xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex','FontSize',30);
-ylabel('$dB(\omega)/d\omega$ $[\mathrm{fm^6/MeV}]$','Interpreter','latex','FontSize',30);
+xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex');
+ylabel('$dB(\omega)/d\omega$ $[\mathrm{fm^6/MeV}]$','Interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
 set(gca,'FontSize',20);
     

@@ -5,17 +5,17 @@ close all;
 addpath('../functions');
 
 
-A = function_readmatd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'A.mat' );
-B = function_readmatd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'B.mat' );
+A = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat" );
+B = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat" );
 
-[ Omegas , RPA_BIS , RPA_BIV ] = function_readSkyrmeRPAeigenfreq( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/' , 'skyrme_rpa.out' );
+[ Omegas , RPA_BIS , RPA_BIV ] = function_readSkyrmeRPAeigenfreq( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/" , "skyrme_rpa.out" );
 
 
 
 
 fprintf('\nISOSCALAR\n');
-F20 = function_readvecd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F02_ISOSCALAR.vec' );
-F02 = function_readvecd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F20_ISOSCALAR.vec' );
+F20 = function_readvecd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "F02_ISOSCALAR.vec" );
+F02 = function_readvecd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "F20_ISOSCALAR.vec" );
 
 for kthMoment = [ -9 , -7 , -5 , -3 , -1 , +1 , +3 , +5 , +7 , +9 ]
 
@@ -43,8 +43,8 @@ end
 
 
 fprintf('\nISOVECTOR\n');
-F20 = function_readvecd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F02_ISOVECTOR.vec' );
-F02 = function_readvecd( '../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/' , 'F20_ISOVECTOR.vec' );
+F20 = function_readvecd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "F02_ISOVECTOR.vec" );
+F02 = function_readvecd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "F20_ISOVECTOR.vec" );
 
 for kthMoment = [ -9 , -7 , -5 , -3 , -1 , +1 , +3 , +5 , +7 , +9 ]
 

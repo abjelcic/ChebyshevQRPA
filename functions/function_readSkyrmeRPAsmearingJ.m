@@ -1,11 +1,7 @@
 function [gamma,J] = function_readSkyrmeRPAsmearingJ( path , fileName )
-    
-    path     = string(path);
-    fileName = string(fileName);
-
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-3) == '.in' , 'Smearing not in .in format!' );
+   
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
     
    
     for i = 1 : 6

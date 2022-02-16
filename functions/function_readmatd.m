@@ -1,11 +1,7 @@
 function A = function_readmatd( path , fileName )
     
-    path     = string(path);
-    fileName = string(fileName);
-
-    fid = fopen( path + fileName );
-    assert( fid ~= -1 , 'Cannot open file: ' + path + fileName );
-    assert( extractAfter(fileName,strlength(fileName)-4) == '.mat' , 'Matrix not in .mat format!' );
+    fid = fopen( strcat(path,fileName) );
+    assert( fid ~= -1 , strcat("Cannot open file: ",path,fileName) );
     
     
     Line = fgetl(fid);

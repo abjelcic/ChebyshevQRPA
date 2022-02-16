@@ -59,13 +59,13 @@ for N_it = [ 200 , 400 , 800 , 1600 , 3200 , 6400 ]
     plot( xPlotMesh2 , yPlotMesh2 , 'b:'  , 'LineWidth' , 2.5 , 'MarkerSize' , 3 ); hold on;
     %grid on; grid minor;
     
-    legend1 = 'True response ($\gamma$ = ' + string(gamma_smear) + ' $\mathrm{MeV}$)';
-    legend2 = 'KPM ($N_{\mathrm{it}} = $ ' + string(N_it) + ')';
-    legend({legend1,legend2},'Interpreter','latex','FontSize',20);
+    legend1 = strcat( "True response ($\gamma$ = " , num2str(gamma_smear) , " $\mathrm{MeV}$)" );
+    legend2 = strcat( "KPM ($N_{\mathrm{it}} = $ " , num2str(N_it)        , ")"                );
+    legend({legend1,legend2},'Interpreter','latex');
     
     xlim([0,50]); ylim([0,scale1*1.1]);
-    xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex','FontSize',30);
-    ylabel('$dB(\omega)/d\omega$','Interpreter','latex','FontSize',30);
+    xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex');
+    ylabel('$dB(\omega)/d\omega$','Interpreter','latex');
     set(gca,'TickLabelInterpreter','latex');
     set(gca,'FontSize',20);
     

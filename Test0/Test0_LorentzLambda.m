@@ -34,7 +34,7 @@ for i = 1 : length(lambdas)
     
     
     xlim([-0.5,+0.5]);
-    xlabel({'$x$','$\lambda = ' + string(lambda) + ' $'},'Interpreter','latex');
+    xlabel({"$x$",strcat("$\lambda = ",num2str(lambda)," $")},'Interpreter','latex');
     xticks([ -0.50 , 0.00 , +0.50 ]);
 
     ylim([0,20]);
