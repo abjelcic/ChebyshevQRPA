@@ -1,12 +1,11 @@
-% MATLAB R2018a
 clear;
 clc;
 close all;
 addpath('../functions');
 
 
-A = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat" );
-B = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat" );
+fprintf('Readimg A.mat...\n'); A = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat" );
+fprintf('Readimg B.mat...\n'); B = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat" );
 
 [ Omegas , RPA_BIS , RPA_BIV ] = function_readSkyrmeRPAeigenfreq( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/" , "skyrme_rpa.out" );
 

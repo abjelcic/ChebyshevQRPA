@@ -1,4 +1,3 @@
-% MATLAB R2018a
 clear;
 clc;
 close all;

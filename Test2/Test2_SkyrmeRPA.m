@@ -1,4 +1,3 @@
-% MATLAB R2018a
 clear;
 clc;
 close all;
@@ -11,10 +10,10 @@ Omegab        = 250;
 ISIV          = "ISOVECTOR";
 
 
-A   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat"                    );
-B   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat"                    );
-F20 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
-F02 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
+fprintf('Reading A.mat...  \n'); A   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat"                    );
+fprintf('Reading B.mat...  \n'); B   = function_readmatd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat"                    );
+fprintf('Reading F20.vec...\n'); F20 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
+fprintf('Reading F02.vec...\n'); F02 = function_readvecd( "./skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , strcat("F02_",ISIV,".vec") );
 
 [gamma_smear,J] = function_readSkyrmeRPAsmearingJ( "./skyrme_rpa/skyrme_rpa_MODIFIED/" , "skyrme_rpa.in" );
 

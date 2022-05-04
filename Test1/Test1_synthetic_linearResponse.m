@@ -1,11 +1,10 @@
-% MATLAB R2018a
 clear;
 clc;
 close all;
 addpath('../functions');
 
 Np            = 50;
-NPlotMesh     = 300000;
+NPlotMesh     = 30000;
 gamma_smear   = 0.05;
 kernel        = 'Lorentz';
 lambdaLorentz = 1.5;
