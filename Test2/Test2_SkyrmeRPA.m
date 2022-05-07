@@ -3,7 +3,8 @@ clc;
 close all;
 addpath('../functions');
 
-NPlotMesh     = 300000;
+N_its         = [ 200 , 400 , 800 , 1600 , 3200 , 6400 ];
+NPlotMesh     = 300000; % Must be NPlotMesh > max(N_its)
 kernel        = 'Lorentz';
 lambdaLorentz = 1.5;
 Omegab        = 250;
@@ -35,14 +36,14 @@ end
 
 
 
-for N_it = [ 200 , 400 , 800 , 1600 , 3200 , 6400 ]
+for N_it = N_its
     
     mun = function_ChebyshevCoefficients( A , B , F20 , F02 , Omegab , N_it );
     mun = function_applyKernel( mun , kernel , lambdaLorentz );
     
     gamma_Cheb = Omegab*lambdaLorentz/length(mun);
     
-    [xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( mun , Omegab , NPlotMesh );
+    [xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( N_it , mun , Omegab , NPlotMesh );
     scale2 = max(abs(yPlotMesh2( xPlotMesh2>=0 & xPlotMesh2<=50 )));
 
     figure;

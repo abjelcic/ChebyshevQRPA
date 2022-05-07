@@ -21,7 +21,7 @@ mun = function_applyKernel( mun , kernel , lambdaLorentz );
 
 gamma_Cheb = Omegab*lambdaLorentz/(2*N_it+1);
 
-[xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( mun , Omegab , NPlotMesh );
+[xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( N_it , mun , Omegab , NPlotMesh );
 scale2 = max(abs(yPlotMesh2( xPlotMesh2>=0 & xPlotMesh2<=50 )));
 
 
