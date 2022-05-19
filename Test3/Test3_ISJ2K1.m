@@ -2,6 +2,7 @@ clear;
 clc;
 close all;
 addpath('../functions');
+tic;
 
 N_it          = 100000;
 NPlotMesh     = 10000000;
@@ -9,11 +10,12 @@ kernel        = 'Lorentz';
 lambdaLorentz = 1.5;
 
 
-
+fprintf('Reading DIRQFAM true response.\n');
 [xPlotMesh1,yPlotMesh1,gamma_smear] = function_readDIRQFAMstrength( "./DIRQFAM/DIRQFAMCheb/output/QFAM_output/" , "strength_Zr100_ISJ2K1.out" );
 scale1 = max(abs(yPlotMesh1( xPlotMesh1>=0 & xPlotMesh1<=50 )));
 
 
+fprintf('Reading Chebyshev coefficients.\n');
 [mun,Omegab] = function_readDIRQFAMmun( "./DIRQFAM/DIRQFAMCheb/output/QFAM_output/" , "mu_Zr100_ISJ2K1.out" );
 assert( length(mun) >= 2*N_it+1 , 'Not enough mun coefficients.' );
 mun = mun( 1 : 2*N_it+1 );
@@ -36,7 +38,7 @@ legend1 = strcat("True response ($\gamma$ = " , num2str(gamma_smear) , " $\mathr
 legend2 = strcat("KPM ($N_{\mathrm{it}} = $ " , num2str(N_it)        , ")"                );
 legend({legend1,legend2},'Interpreter','latex');
 
-xlim([0,17]); ylim([0,+Inf]);
+xlim([0,17]); ylim([0,+2500]);
 xlabel('$\omega$ $[\mathrm{MeV}]$','Interpreter','latex');
 ylabel('$dB(\omega)/d\omega$ $[\mathrm{fm^4/MeV}]$','Interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
@@ -44,3 +46,5 @@ set(gca,'FontSize',20);
     
 fprintf('N_it = %5d, Chebyshev smearing: %9.4f MeV.\n' , N_it , gamma_Cheb );
 
+time = toc;
+fprintf( 'Total time: %.2f s.\n' , time );

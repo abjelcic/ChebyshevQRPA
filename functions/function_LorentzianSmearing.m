@@ -25,6 +25,11 @@ function [x,y] = function_LorentzianSmearing( Omegas , absiFO2 , absOFi2 , gamma
     x = linspace( -Omegab , +Omegab , NevalPoints );
     y = zeros( 1 , length(x) );
     for i = 1 : length(x)
+        
+        if( mod( i , floor(length(x)/10) ) == 0 )
+            fprintf( 'Calculated %.2f%% of true response.\n' , 100*i/length(x) );
+        end
+        
         omega = x(i);
         
         dBdw = 0;

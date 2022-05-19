@@ -2,6 +2,7 @@ clear;
 clc;
 close all;
 addpath('../functions');
+tic;
 
 Omegab = 250;
 
@@ -156,3 +157,5 @@ ylabel('$|m_k-m_k^{\mathrm{(Chebyshev)}}|/m_k$','Interpreter','latex');
 set(gca,'TickLabelInterpreter','latex');
 set(gca,'FontSize',20);   
 
+time = toc;
+fprintf( 'Total time: %.2f s.\n' , time );

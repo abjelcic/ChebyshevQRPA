@@ -2,9 +2,12 @@ clear;
 clc;
 close all;
 addpath('../functions');
+tic;
 
 N_its         = [ 200 , 400 , 800 , 1600 , 3200 , 6400 ];
-NPlotMesh     = 300000; % Must be NPlotMesh > max(N_its)
+% Must be NPlotMesh > max(N_its)
+%NPlotMesh    = 300000; % Recommended value with MATLAB
+NPlotMesh     = 6500;   % Recommended value with Octave
 kernel        = 'Lorentz';
 lambdaLorentz = 1.5;
 Omegab        = 250;
@@ -43,6 +46,7 @@ for N_it = N_its
     
     gamma_Cheb = Omegab*lambdaLorentz/length(mun);
     
+    fprintf( 'N_it = %5d, calculating Chebyshev coefficients.\n' , N_it);
     [xPlotMesh2,yPlotMesh2] = function_fftEvaluateChebSeries( N_it , mun , Omegab , NPlotMesh );
     scale2 = max(abs(yPlotMesh2( xPlotMesh2>=0 & xPlotMesh2<=50 )));
 
@@ -72,10 +76,11 @@ for N_it = N_its
     set(gca,'TickLabelInterpreter','latex');
     set(gca,'FontSize',20);
   
-    fprintf('N_it = %5d, Chebyshev smearing: %9.4f MeV.\n' , N_it , gamma_Cheb );
+    fprintf('N_it = %5d, calculatin finished, Chebyshev smearing: %9.4f MeV.\n' , N_it , gamma_Cheb );
         
     pause(0.1);    
     
 end
     
-    
+time = toc;
+fprintf( 'Total time: %.2f s.\n' , time );

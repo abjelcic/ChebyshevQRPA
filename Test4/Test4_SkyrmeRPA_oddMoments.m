@@ -2,7 +2,7 @@ clear;
 clc;
 close all;
 addpath('../functions');
-
+tic;
 
 fprintf('Readimg A.mat...\n'); A = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "A.mat" );
 fprintf('Readimg B.mat...\n'); B = function_readmatd( "../Test2/skyrme_rpa/skyrme_rpa_MODIFIED/out_matvec/" , "B.mat" );
@@ -67,3 +67,5 @@ for kthMoment = [ -9 , -7 , -5 , -3 , -1 , +1 , +3 , +5 , +7 , +9 ]
 
 end
 
+time = toc;
+fprintf( 'Total time: %.2f s.\n' , time );

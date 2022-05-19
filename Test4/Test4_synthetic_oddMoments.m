@@ -2,6 +2,7 @@ clear;
 clc;
 close all;
 addpath('../functions');
+tic;
 
 Np = 1000;
 
@@ -38,3 +39,6 @@ for kthMoment = [ -9 , -7 , -5 , -3 , -1 , +1 , +3 , +5 , +7 , +9 ]
     fprintf('k = %+2d, mk(calculated) = %e, mk(correct) = %e, rel. err. = %e\n' , kthMoment , mk_calculated , mk_correct , relerr );
 
 end
+
+time = toc;
+fprintf( 'Total time: %.2f s.\n' , time );
